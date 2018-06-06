@@ -9,7 +9,7 @@ import lombok.Getter;
  * @Date : 下午6:33 2018/6/5
  */
 @Getter
-public enum ProductStatus {
+public enum ProductStatusEnum {
     AUDINTING("审核中"),
     IN_SELL("销售中"),
     LOCKED("暂停销售"),
@@ -17,7 +17,7 @@ public enum ProductStatus {
     ;
     private String desc;
 
-    ProductStatus(String desc) {
+    ProductStatusEnum(String desc) {
         this.desc = desc;
     }
 }
