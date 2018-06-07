@@ -31,22 +31,21 @@ public class Product {
 
     /** 起投金额.*/
     @NotNull
-    private BigDecimal threshold_amount;
+    private BigDecimal thresholdAmount;
 
     /** 投资步长.*/
     @StepAmountMustInt
-    public BigDecimal step_amount;
+    public BigDecimal stepAmount;
 
     /** 锁定期.*/
-    private Integer lock_term;
+    private Integer lockTerm;
 
     /** 收益率，0-100 百分比值.*/
-    @NotNull
     @RewardRateScope
-    public BigDecimal reward_rate;
+    @NotNull
+    public BigDecimal rewardRate;
 
     /** 状态,audinting:审核中,in_sell:销售中,locked:暂停销售,finished:已结束.*/
-    @NotNull
     private String status;
 
     /** 备注.*/
@@ -63,4 +62,14 @@ public class Product {
 
     /** 修改者.*/
     private String updateUser;
+
+    public Product(String id, String name, BigDecimal thresholdAmount, BigDecimal rewardRate) {
+        this.id = id;
+        this.name = name;
+        this.thresholdAmount = thresholdAmount;
+        this.rewardRate = rewardRate;
+    }
+
+    public Product() {
+    }
 }

@@ -22,6 +22,9 @@ public class RewardRateConstraintValidator implements ConstraintValidator<Reward
 
     @Override
     public boolean isValid(BigDecimal value, ConstraintValidatorContext constraintValidatorContext) {
+        if (value == null) {
+            return true;
+        }
         if (BigDecimal.ZERO.compareTo(value) < 0 && (BigDecimal.valueOf(30).compareTo(value)) >=0) {
             log.debug("收益率验证通过: " + value);
             return true;

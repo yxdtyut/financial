@@ -1,7 +1,8 @@
-package com.yxdtyut.manager;
+package com.yxdtyut;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 /**
  * @Author : yangxudong
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date : 上午10:21 2018/6/6
  */
 @SpringBootApplication
+@EntityScan(basePackages = "com.yxdtyut.entity")
 public class StartUp {
     public static void main(String[] args) {
         SpringApplication.run(StartUp.class);

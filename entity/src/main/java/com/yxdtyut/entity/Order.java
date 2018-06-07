@@ -3,6 +3,8 @@ package com.yxdtyut.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,9 +14,11 @@ import java.util.Date;
  * @Date : 上午9:33 2018/6/6
  */
 @Data
-@Entity(name = "order_t")
+@Entity
+@Table(name = "order_t")
 public class Order {
     /** 订单编号.*/
+    @Id
     private String orderId;
 
     /** 渠道编号.*/

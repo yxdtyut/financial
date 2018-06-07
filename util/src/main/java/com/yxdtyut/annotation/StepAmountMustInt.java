@@ -1,6 +1,7 @@
 package com.yxdtyut.annotation;
 
 import com.yxdtyut.annotation.constraintValidator.RewardRateConstraintValidator;
+import com.yxdtyut.annotation.constraintValidator.StepAmountMustIntConstraintValidator;
 
 /**
  * @Author : yangxudong
@@ -10,7 +11,7 @@ import com.yxdtyut.annotation.constraintValidator.RewardRateConstraintValidator;
 @java.lang.annotation.Target({java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.ANNOTATION_TYPE, java.lang.annotation.ElementType.CONSTRUCTOR, java.lang.annotation.ElementType.PARAMETER})
 @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @java.lang.annotation.Documented
-@javax.validation.Constraint(validatedBy = {RewardRateConstraintValidator.class})
+@javax.validation.Constraint(validatedBy = {StepAmountMustIntConstraintValidator.class})
 public @interface StepAmountMustInt {
     java.lang.String message() default "{投资步长有误，必须为整数}";
 

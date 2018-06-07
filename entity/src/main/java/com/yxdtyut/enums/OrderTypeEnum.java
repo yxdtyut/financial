@@ -9,11 +9,13 @@ import lombok.Getter;
  */
 @Getter
 public enum OrderTypeEnum {
-    APPLY("申购"),
-    REDEEM("赎回");
+    APPLY("APPLY","申购"),
+    REDEEM("REDEEM","赎回");
+    private String code;
     private String desc;
 
-    OrderTypeEnum(String desc) {
+    OrderTypeEnum(String code, String desc) {
+        this.code = code;
         this.desc = desc;
     }
 }

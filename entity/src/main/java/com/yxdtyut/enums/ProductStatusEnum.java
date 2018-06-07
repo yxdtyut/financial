@@ -10,14 +10,16 @@ import lombok.Getter;
  */
 @Getter
 public enum ProductStatusEnum {
-    AUDINTING("审核中"),
-    IN_SELL("销售中"),
-    LOCKED("暂停销售"),
-    FINISHED("已结束"),
+    AUDINTING("AUDINTING","审核中"),
+    IN_SELL("IN_SELL","销售中"),
+    LOCKED("LOCKED","暂停销售"),
+    FINISHED("FINISHED","已结束"),
     ;
+    private String code;
     private String desc;
 
-    ProductStatusEnum(String desc) {
+    ProductStatusEnum(String code, String desc) {
+        this.code = code;
         this.desc = desc;
     }
 }
