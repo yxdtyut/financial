@@ -9,15 +9,13 @@ import lombok.Getter;
  */
 @Getter
 public enum OrderStatusEnum {
-    INIT("INIT","初始化"),
-    PROCESS("PROCESS","处理中"),
-    SUCCESS("SUCCESS","成功"),
-    FAIL("FAIL","失败");
-    private String code;
+    INIT("初始化"),
+    PROCESS("处理中"),
+    SUCCESS("成功"),
+    FAIL("失败");
     private String desc;
 
-    OrderStatusEnum(String code, String desc) {
-        this.code = code;
+    OrderStatusEnum(String desc) {
         this.desc = desc;
     }
 }

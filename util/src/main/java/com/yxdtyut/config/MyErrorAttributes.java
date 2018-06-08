@@ -18,7 +18,7 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(RequestAttributes requestAttributes, boolean includeStackTrace) {
         Map<String, Object> map =  super.getErrorAttributes(requestAttributes, includeStackTrace);
         map.clear();
-        map.put("author", "yxd");
+        map.put("author", "yxd"); 
         Map<String,Object> extMap = (Map<String, Object>) requestAttributes.getAttribute("ext", RequestAttributes.SCOPE_REQUEST);
         map.put("errorMessage", extMap.get("errorMessage"));
         return map;

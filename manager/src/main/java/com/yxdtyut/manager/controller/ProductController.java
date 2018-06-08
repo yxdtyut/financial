@@ -2,6 +2,7 @@ package com.yxdtyut.manager.controller;
 
 import com.yxdtyut.entity.Product;
 import com.yxdtyut.manager.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/save")
+    @ApiOperation(value = "创建产品", notes = "根据对应业务规则添加产品")
     public Product save(@Valid @RequestBody Product product) {
         log.info("保存产品,参数:{}" , product);
         Product returnProduct = productService.saveProduct(product);

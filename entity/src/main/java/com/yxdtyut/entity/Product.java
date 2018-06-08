@@ -2,6 +2,7 @@ package com.yxdtyut.entity;
 
 import com.yxdtyut.annotation.RewardRateScope;
 import com.yxdtyut.annotation.StepAmountMustInt;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -46,6 +47,7 @@ public class Product {
     public BigDecimal rewardRate;
 
     /** 状态,audinting:审核中,in_sell:销售中,locked:暂停销售,finished:已结束.*/
+    @ApiModelProperty(value = "状态", dataType = "com.yxdtyut.enums.ProductStatusEnum")
     private String status;
 
     /** 备注.*/

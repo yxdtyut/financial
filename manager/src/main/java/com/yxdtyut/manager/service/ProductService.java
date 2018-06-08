@@ -103,7 +103,7 @@ public class ProductService {
             product.setStepAmount(BigDecimal.ZERO);
         }
         if (product.getStatus() == null) {
-            product.setStatus(ProductStatusEnum.AUDINTING.getCode());
+            product.setStatus(ProductStatusEnum.AUDINTING.name());
         }
     }
 }

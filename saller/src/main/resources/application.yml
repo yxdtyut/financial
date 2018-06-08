@@ -8,8 +8,6 @@ spring:
   jpa:
     show-sql: true
 server:
-  port: 8081
-  context-path: /manager
-swagger:
-  groupName: manager
-  base-package: com.yxdtyut.manager.controller
+  port: 8082
+  context-path: /saller
+rpc.manager.url: http://localhost:8081/manager/
