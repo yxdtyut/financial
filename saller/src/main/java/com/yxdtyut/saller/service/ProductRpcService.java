@@ -34,7 +34,7 @@ public class ProductRpcService {
         ArrayList statusList = new ArrayList();
         statusList.add(ProductStatusEnum.AUDINTING.name());
         productRpcDomain.setStatusList(statusList);
-        log.info("saller客户端调用产品查询,参数:{}",statusList);
+        log.info("saller客户端调用产品查询,参数:{}",productRpcDomain);
         List<Product> productList = productRpc.findAll(productRpcDomain);
         log.info("saller客户端调用产品查询,结果:{}",productList);
         return productList;
