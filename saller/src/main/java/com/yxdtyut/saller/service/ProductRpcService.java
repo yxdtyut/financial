@@ -6,10 +6,6 @@ import com.yxdtyut.rpc.ProductRpc;
 import com.yxdtyut.rpc.domain.ProductRpcDomain;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -40,8 +36,15 @@ public class ProductRpcService {
         return productList;
     }
 
+    public Product findOne(String id) {
+        log.info("saller客户端调用产品查询,参数:{}",id);
+        Product product = productRpc.findOne(id);
+        log.info("saller客户端调用产品查询,结果:{}",product);
+        return product;
+    }
+
     @PostConstruct
     public void init() {
-        findAll();
+        findOne("0002");
     }
 }
