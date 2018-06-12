@@ -12,8 +12,16 @@ import lombok.Getter;
 public class CodeMsg {
     /**通用模块.*/
     public static final CodeMsg SUCCESS = new CodeMsg(200, "成功");
-    public static final CodeMsg SERVER_ERROR = new CodeMsg(500, "服务异常");
+    public static final CodeMsg SERVER_ERROR = new CodeMsg(5001, "服务异常");
+    public static final CodeMsg RSA_SIGN_ERROR = new CodeMsg(5002, "验签失败");
     public static final CodeMsg PARAM_ERROR = new CodeMsg(400);
+
+    /** 产品模块600xxx.*/
+    public static final CodeMsg PRODUCT_NOT_EXIST = new CodeMsg(600001, "产品不存在");
+
+    /** 订单模块700xxx.*/
+    public static final CodeMsg AMOUNT_SMALL_THRESHOLDAMOUNT = new CodeMsg(700001, "订单金额小于起投金额");
+    public static final CodeMsg AMOUNT_NOTINTEGER_STEP = new CodeMsg(700001, "超过起投金额的部分不是步长的整数倍");
 
 
     private Integer code;

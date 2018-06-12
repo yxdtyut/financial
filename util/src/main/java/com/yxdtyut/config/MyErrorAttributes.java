@@ -21,6 +21,9 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
         map.put("author", "yxd"); 
         Map<String,Object> extMap = (Map<String, Object>) requestAttributes.getAttribute("ext", RequestAttributes.SCOPE_REQUEST);
         map.put("errorMessage", extMap.get("errorMessage"));
+        if (null != extMap.get("exception")) {
+            map.put("exception", extMap.get("exception"));
+        }
         return map;
     }
 }

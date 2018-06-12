@@ -9,6 +9,8 @@ ext {
                 "org.springframework.boot:spring-boot-configuration-processor:${versions.springBootVersion}",
                 "org.apache.commons:commons-lang3:3.5",
                 "org.projectlombok:lombok:1.18.0",
+                "commons-codec:commons-codec:1.8",
+                "commons-io:commons-io:2.4",
                 "com.squareup.okhttp:okhttp:2.2.0",
                 "com.alibaba:fastjson:1.2.47"
         ],

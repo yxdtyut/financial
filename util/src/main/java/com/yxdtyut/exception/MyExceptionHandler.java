@@ -63,6 +63,16 @@ public class MyExceptionHandler {
         return "forward:/error";
     }
 
+    @ExceptionHandler(Exception.class)
+    public String handlerException(Exception e, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("errorMessage", CodeMsg.SERVER_ERROR);
+        map.put("exception", e.getMessage());
+        request.setAttribute("ext", map);
+        request.setAttribute("javax.servlet.error.status_code",525);
+        return "forward:/error";
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public String handlerNotValid(Exception e, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
