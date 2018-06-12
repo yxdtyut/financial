@@ -3,9 +3,9 @@ package com.yxdtyut.manager.service;
 import com.yxdtyut.entity.Product;
 import com.yxdtyut.enums.ProductStatusEnum;
 import com.yxdtyut.manager.repository.ProductRepository;
+import com.yxdtyut.rabbitmq.MQSender;
+import com.yxdtyut.rabbitmq.ProductMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +30,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private MQSender mqSender;
 
     public Product saveProduct(Product product) {
         log.debug("保存产品,参数:{}" , product);
@@ -105,5 +108,20 @@ public class ProductService {
         if (product.getStatus() == null) {
             product.setStatus(ProductStatusEnum.AUDINTING.name());
         }
+    }
+
+    /**
+     * @Author : yangxudong
+     * @Description : 产品状态变更
+     * @param
+     * @Date : 上午9:24 2018/6/12
+     */
+    public Boolean updateProductStatus(String id, String status) {
+        Product product = productRepository.findOne(id);
+        product.setStatus(status);
+        productRepository.save(product);
+        ProductMessage productMessage = new ProductMessage(id,status);
+        mqSender.sendStatusMessage(productMessage);
+        return true;
     }
 }

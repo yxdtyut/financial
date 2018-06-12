@@ -22,6 +22,15 @@ ext {
                 "io.springfox:springfox-swagger2:2.7.0",
                 "io.springfox:springfox-swagger-ui:2.7.0"
         ],
+        hazelcast   : [
+                'com.hazelcast:hazelcast:3.10.2'
+        ],
+        redis       : [
+                "redis.clients:jedis:2.9.0"
+        ],
+        rabbitmq       : [
+                "org.springframework.boot:spring-boot-starter-amqp:${versions.springBootVersion}"
+        ],
         test        : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}",
         ]

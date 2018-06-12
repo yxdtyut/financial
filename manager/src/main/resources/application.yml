@@ -7,6 +7,10 @@ spring:
     password: root
   jpa:
     show-sql: true
+  rabbitmq:
+    host: 10.3.25.1
+    username: guest
+    password: guest
 server:
   port: 8081
   context-path: /manager

@@ -1,6 +1,7 @@
 package com.yxdtyut.manager.controller;
 
 import com.yxdtyut.entity.Product;
+import com.yxdtyut.enums.ProductStatusEnum;
 import com.yxdtyut.manager.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +64,18 @@ public class ProductController {
         Page<Product> productPage = productService.search(idList, minRewardRate, maxRewardRate, statuList, pageable);
         log.info("查询产品,结果={}", productPage);
         return productPage;
+    }
+
+    @GetMapping("/finish/{id}")
+    public Boolean updateStatusFinish(@PathVariable String id) {
+        Boolean bo = productService.updateProductStatus(id, ProductStatusEnum.FINISHED.name());
+        return bo;
+    }
+
+    @GetMapping("/sell/{id}")
+    public Boolean updateStatusInSell(@PathVariable String id) {
+        Boolean bo = productService.updateProductStatus(id,ProductStatusEnum.IN_SELL.name());
+        return bo;
     }
 
 }

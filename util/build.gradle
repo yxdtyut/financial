@@ -1,3 +1,5 @@
 dependencies{
     compile libs.jsonrpc
+    compile libs.redis
+    compile libs.rabbitmq
 }
