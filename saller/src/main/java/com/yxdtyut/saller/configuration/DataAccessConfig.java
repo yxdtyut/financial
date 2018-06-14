@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.config.RepositoryBeanNamePrefix;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -33,6 +34,7 @@ public class DataAccessConfig {
     @Autowired
     private JpaProperties jpaProperties;
 
+    /** 双数据源.*/
     @Bean
     @Primary
     @ConfigurationProperties("spring.datasource.primary")
@@ -46,6 +48,7 @@ public class DataAccessConfig {
         return DataSourceBuilder.create().build();
     }
 
+    /** 双对象管理工厂 .*/
     @Bean
     @Primary
     public LocalContainerEntityManagerFactoryBean orderEntityManagerFactory(
@@ -75,7 +78,7 @@ public class DataAccessConfig {
         return vendorProperties;
     }
 
-
+    /** 双事务管理器.*/
     @Bean
     @Primary
     public PlatformTransactionManager primaryTransactionManager(@Qualifier("orderEntityManagerFactory") LocalContainerEntityManagerFactoryBean managerFactoryBean) {
@@ -89,12 +92,22 @@ public class DataAccessConfig {
         return transactionManager;
     }
 
-
+    /** 采用不同的数据源定义不同或者相同的repository.*/
     @Configuration
+    @Primary
     @EnableJpaRepositories(basePackageClasses = OrderRepository.class,
             entityManagerFactoryRef = "orderEntityManagerFactory"
             ,transactionManagerRef = "primaryTransactionManager")
     public class OrderConfiguration {
+
+    }
+
+    @Configuration
+    @RepositoryBeanNamePrefix(value = "read")
+    @EnableJpaRepositories(basePackageClasses = OrderRepository.class,
+            entityManagerFactoryRef = "verifyEntityManagerFactory"
+            ,transactionManagerRef = "backupTransactionManager")
+    public class OrderReadConfiguration {
 
     }
 
@@ -105,5 +118,7 @@ public class DataAccessConfig {
     public class VerifyConfiguration {
 
     }
+
+
 
 }

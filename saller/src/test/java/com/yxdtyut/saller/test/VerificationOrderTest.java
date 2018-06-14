@@ -5,6 +5,7 @@ import com.yxdtyut.saller.service.VerificationOrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -26,7 +27,17 @@ public class VerificationOrderTest {
     private OrderRepository orderRepository;
 
     @Autowired
+    @Qualifier("readorderRepository")
+    private OrderRepository readOrderRepository;
+
+    @Autowired
     private VerificationOrderService verificationOrderService;
+
+    @Autowired
+    @Qualifier("orderBackupRepository")
+    private OrderRepository orderBackUpRepository;
+
+    @Autowired
 
     @Test
     public void testVerification() {
@@ -52,6 +63,8 @@ public class VerificationOrderTest {
 
     @Test
     public void test() {
-        System.out.println(orderRepository.findAll());
+        System.out.println("写:"+orderRepository.findAll());
+        System.out.println("读:"+readOrderRepository.findAll());
+
     }
 }
