@@ -22,6 +22,7 @@ public class CodeMsg {
     /** 订单模块700xxx.*/
     public static final CodeMsg AMOUNT_SMALL_THRESHOLDAMOUNT = new CodeMsg(700001, "订单金额小于起投金额");
     public static final CodeMsg AMOUNT_NOTINTEGER_STEP = new CodeMsg(700001, "超过起投金额的部分不是步长的整数倍");
+    public static final CodeMsg CHAN_NOT_RIGHT = new CodeMsg(700002, "渠道编号有误");
 
 
     private Integer code;
