@@ -1,5 +1,6 @@
 package com.yxdtyut.saller.test;
 
+import com.yxdtyut.saller.repository.OrderRepository;
 import com.yxdtyut.saller.service.VerificationOrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,9 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class VerificationOrderTest {
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Autowired
     private VerificationOrderService verificationOrderService;
@@ -44,5 +48,10 @@ public class VerificationOrderTest {
         errors.forEach(error -> {
             System.out.println(error);
         });
+    }
+
+    @Test
+    public void test() {
+        System.out.println(orderRepository.findAll());
     }
 }

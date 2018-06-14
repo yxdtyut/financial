@@ -4,7 +4,7 @@ import com.yxdtyut.entity.VerificationOrder;
 import com.yxdtyut.exception.GlobleException;
 import com.yxdtyut.result.CodeMsg;
 import com.yxdtyut.saller.enums.ChanEnum;
-import com.yxdtyut.saller.repository.VerificationOrderRepository;
+import com.yxdtyut.saller.repositoryBackup.VerificationOrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
